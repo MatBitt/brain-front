@@ -1,0 +1,11 @@
+<mat-toolbar color="primary">
+  <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
+    <mat-icon>menu</mat-icon>
+  </button>
+  <mat-menu #menu="matMenu">
+    <button mat-menu-item routerLink="/aluno/listar">Listar alunos</button>
+    <button mat-menu-item routerLink="/aluno/cadastrar">Cadastrar alunos</button>
+  </mat-menu>
+  <span>Brain</span>
+</mat-toolbar>
+<router-outlet></router-outlet>

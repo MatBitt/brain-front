@@ -1,0 +1,44 @@
+{
+  "content": [
+    {
+      "cpf": "02039705198",
+      "matricula": "M02039705198",
+      "nome": "Mateus de Moura Ramos Bittencourt",
+      "email": "bittenmat@gmail.com",
+      "endereco": {
+        "logradouro": "SHIN QI 4 Conjunto 11",
+        "bairro": "Lago Norte",
+        "cep": "71510310",
+        "complemento": "",
+        "numero": "6",
+        "uf": "DF",
+        "cidade": "Brasilia"
+      }
+    }
+  ],
+  "pageable": {
+    "pageNumber": 0,
+    "pageSize": 10,
+    "sort": {
+      "empty": false,
+      "sorted": true,
+      "unsorted": false
+    },
+    "offset": 0,
+    "paged": true,
+    "unpaged": false
+  },
+  "last": true,
+  "totalElements": 1,
+  "totalPages": 1,
+  "size": 10,
+  "number": 0,
+  "sort": {
+    "empty": false,
+    "sorted": true,
+    "unsorted": false
+  },
+  "first": true,
+  "numberOfElements": 1,
+  "empty": false
+}

@@ -1,0 +1,6 @@
+@use '../../../styles.scss' as *;
+@use '@angular/material' as mat;
+
+.titulo {
+  color: mat.get-color-from-palette($custom-app-warn);
+}
