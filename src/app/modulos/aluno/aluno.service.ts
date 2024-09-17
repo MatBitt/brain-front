@@ -7,7 +7,7 @@ import { Pagina } from '../../model/pagina';
   providedIn: 'root',
 })
 export class AlunoService {
-  private readonly API = 'api/aluno';
+  private readonly API = '/api/aluno';
 
   constructor(private httpClient: HttpClient) {}
 

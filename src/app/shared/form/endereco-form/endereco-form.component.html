@@ -1,0 +1,39 @@
+<form [formGroup]="enderecoForm">
+  <mat-form-field>
+    <input matInput placeholder="CEP" formControlName="cep" #cep />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="UF" formControlName="uf" #uf />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Cidade" formControlName="cidade" #cidade />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Bairro" formControlName="bairro" #bairro />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Logradouro"
+      formControlName="logradouro"
+      #logradouro
+    />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input matInput placeholder="Número" formControlName="numero" #numero />
+  </mat-form-field>
+
+  <mat-form-field>
+    <input
+      matInput
+      placeholder="Complemento"
+      formControlName="complemento"
+      #complemento
+    />
+  </mat-form-field>
+</form>

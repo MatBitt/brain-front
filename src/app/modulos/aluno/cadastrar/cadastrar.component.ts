@@ -2,13 +2,11 @@ import { Location } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import {
   FormGroup,
-  NonNullableFormBuilder,
-  UntypedFormArray,
   Validators,
   ReactiveFormsModule,
+  FormBuilder,
 } from '@angular/forms';
 import { MatSnackBar } from '@angular/material/snack-bar';
-import { ActivatedRoute } from '@angular/router';
 
 import { MatIconModule } from '@angular/material/icon';
 import { MatButtonModule } from '@angular/material/button';
@@ -20,12 +18,16 @@ import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatCardModule } from '@angular/material/card';
 import { AlunoService } from '../aluno.service';
 import { FormUtilsService } from '../../../shared/form/form-utils.service';
-import { Aluno } from '../../../model/aluno';
-import { Genero } from '../../../enum/genero.enum';
+import { MatDatepickerModule } from '@angular/material/datepicker';
+import { provideNativeDateAdapter } from '@angular/material/core';
+import { DateAdapter } from '@angular/material/core';
+import { DatePipe } from '@angular/common';
+import { EnderecoFormComponent } from '../../../shared/form/endereco-form/endereco-form.component';
 
 @Component({
   selector: 'app-cadastrar',
   standalone: true,
+  providers: [provideNativeDateAdapter(), DatePipe],
   imports: [
     MatCardModule,
     MatToolbarModule,
@@ -36,6 +38,8 @@ import { Genero } from '../../../enum/genero.enum';
     MatOptionModule,
     MatButtonModule,
     MatIconModule,
+    MatDatepickerModule,
+    EnderecoFormComponent
   ],
   templateUrl: './cadastrar.component.html',
   styleUrl: './cadastrar.component.scss',
@@ -44,13 +48,16 @@ export class CadastrarComponent implements OnInit {
   form!: FormGroup;
 
   constructor(
-    private formBuilder: NonNullableFormBuilder,
+    private formBuilder: FormBuilder,
     private service: AlunoService,
     private snackBar: MatSnackBar,
     private location: Location,
-    private route: ActivatedRoute,
-    public formUtils: FormUtilsService
-  ) {}
+    public formUtils: FormUtilsService,
+    private datePipe: DatePipe,
+    private dateAdapter: DateAdapter<Date>
+  ) {
+    this.dateAdapter.setLocale('pt-BR');
+  }
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
@@ -65,16 +72,8 @@ export class CadastrarComponent implements OnInit {
       nome: ['Paulo', [Validators.required]],
       nomeSocial: ['Paulinho'],
       email: ['Paulo@gmail.com', [Validators.required]],
-      dataDeNascimento: ['2024-12-12', [Validators.required]],
-      endereco: this.formBuilder.group({
-        logradouro: ['', [Validators.required]],
-        bairro: ['', [Validators.required]],
-        cep: ['', [Validators.required]],
-        complemento: ['', [Validators.required]],
-        numero: ['', [Validators.required]],
-        uf: ['', [Validators.required]],
-        cidade: ['', [Validators.required]],
-      }),
+      dataDeNascimento: ['', [Validators.required]],
+      endereco: this.formBuilder.group({}),
       genero: ['Masculino', [Validators.required]],
       corRaca: ['Branco', [Validators.required]],
       cidadeNaturalidade: ['Brasilia', [Validators.required]],
@@ -84,11 +83,13 @@ export class CadastrarComponent implements OnInit {
   }
 
   onSubmit() {
+    const date = this.atualizaData();
     console.log(this.form.value);
     this.service.save(this.form.value).subscribe(
       (result) => this.onSuccess(),
       (error) => this.onError()
     );
+    this.form.patchValue({ dataDeNascimento: date });
     // if (this.form.valid) {
     // } else {
     //   this.formUtils.validateAllFormFields(this.form);
@@ -105,5 +106,16 @@ export class CadastrarComponent implements OnInit {
 
   private onError() {
     this.snackBar.open('Erro ao salvar aluno.', '', { duration: 5000 });
+  }
+
+  atualizaData() {
+    const date = this.form.get('dataDeNascimento')?.value;
+    const formattedDate = this.datePipe.transform(date, 'yyyy-MM-dd');
+    this.form.patchValue({ dataDeNascimento: formattedDate });
+    return date;
+  }
+
+  onEnderecoChange(enderecoForm: FormGroup): void {
+    this.form.setControl('endereco', enderecoForm); // Atualiza o form principal com o endereço
   }
 }

@@ -8,11 +8,20 @@
       </mat-form-field>
 
       <mat-form-field>
+        <input matInput placeholder="rg" formControlName="rg" #rg />
+      </mat-form-field>
+
+      <mat-form-field>
         <input matInput placeholder="Nome" formControlName="nome" #nome />
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="nomeSocial" formControlName="nomeSocial" #nomeSocial />
+        <input
+          matInput
+          placeholder="nomeSocial"
+          formControlName="nomeSocial"
+          #nomeSocial
+        />
       </mat-form-field>
 
       <mat-form-field>
@@ -20,38 +29,18 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="dataDeNascimento" formControlName="dataDeNascimento" #dataDeNascimento />
+        <mat-label>Data de Nascimento</mat-label>
+        <input
+          matInput
+          [matDatepicker]="picker"
+          formControlName="dataDeNascimento"
+        />
+        <mat-datepicker-toggle
+          matIconSuffix
+          [for]="picker"
+        ></mat-datepicker-toggle>
+        <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
-
-      <form formGroupName="endereco">
-        <mat-form-field>
-          <input matInput placeholder="logradouro" formControlName="logradouro" #endereco />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="bairro" formControlName="bairro" #bairro />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="cep" formControlName="cep" #cep />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="complemento" formControlName="complemento" #complemento />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="numero" formControlName="numero" #numero />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="uf" formControlName="uf" #uf />
-        </mat-form-field>
-
-        <mat-form-field>
-          <input matInput placeholder="cidade" formControlName="cidade" #cidade />
-        </mat-form-field>
-      </form>
 
       <mat-form-field>
         <input matInput placeholder="genero" formControlName="genero" #genero />
@@ -62,7 +51,7 @@
         <mat-select formControlName="genero">
           <mat-option value="masculino">Masculino</mat-option>
           <mat-option value="feminino">Feminino</mat-option>
-          <mat-option value="feminino">Outros</mat-option>
+          <mat-option value="outro">Outro</mat-option>
         </mat-select>
         @if (form.get('category')?.invalid) {
         <mat-error>{{ formUtils.getErrorMessage(form, "category") }}</mat-error>
@@ -70,20 +59,35 @@
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="corRaca" formControlName="corRaca" #corRaca />
+        <input
+          matInput
+          placeholder="corRaca"
+          formControlName="corRaca"
+          #corRaca
+        />
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="cidadeNaturalidade" formControlName="cidadeNaturalidade" #cidadeNaturalidade />
+        <input
+          matInput
+          placeholder="cidadeNaturalidade"
+          formControlName="cidadeNaturalidade"
+          #cidadeNaturalidade
+        />
       </mat-form-field>
 
       <mat-form-field>
-        <input matInput placeholder="rg" formControlName="rg" #rg />
+        <input
+          matInput
+          placeholder="tipoSanguineo"
+          formControlName="tipoSanguineo"
+          #tipoSanguineo
+        />
       </mat-form-field>
 
-      <mat-form-field>
-        <input matInput placeholder="tipoSanguineo" formControlName="tipoSanguineo" #tipoSanguineo />
-      </mat-form-field>
+      <app-endereco-form
+        (enderecoChange)="onEnderecoChange($event)"
+      ></app-endereco-form>
     </form>
   </mat-card-content>
 
