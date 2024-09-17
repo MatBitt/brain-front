@@ -25,7 +25,7 @@ export class EnderecoFormComponent implements OnInit {
     this.enderecoForm = this.fb.group({
       logradouro: ['', Validators.required],
       bairro: ['', Validators.required],
-      cep: ['', [Validators.required, Validators.pattern('[0-9]{5}-[0-9]{3}')]],
+      cep: ['', [Validators.required, Validators.pattern('[0-9]{8}')]],
       complemento: [''],
       numero: ['', Validators.required],
       uf: ['', [Validators.required, Validators.maxLength(2)]],
