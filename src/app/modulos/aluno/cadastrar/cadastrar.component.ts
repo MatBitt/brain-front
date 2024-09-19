@@ -62,23 +62,23 @@ export class CadastrarComponent implements OnInit {
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       cpf: [
-        '12345678901',
+        '',
         [
           Validators.required,
           Validators.minLength(5),
           Validators.maxLength(100),
         ],
       ],
-      nome: ['Paulo', [Validators.required]],
-      nomeSocial: ['Paulinho'],
-      email: ['Paulo@gmail.com', [Validators.required]],
+      nome: ['', [Validators.required]],
+      nomeSocial: [''],
+      email: ['', [Validators.required]],
       dataDeNascimento: ['', [Validators.required]],
       endereco: this.formBuilder.group({}),
-      genero: ['Masculino', [Validators.required]],
-      corRaca: ['Branco', [Validators.required]],
-      cidadeNaturalidade: ['Brasilia', [Validators.required]],
-      rg: ['2345678', [Validators.required]],
-      tipoSanguineo: ['B-', [Validators.required]],
+      genero: ['', [Validators.required]],
+      corRaca: ['', [Validators.required]],
+      cidadeNaturalidade: ['', [Validators.required]],
+      rg: ['', [Validators.required]],
+      tipoSanguineo: ['', [Validators.required]],
     });
   }
 

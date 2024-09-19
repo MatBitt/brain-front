@@ -25,7 +25,16 @@ import { MensagemErroComponent } from '../../../shared/mensagem-erro/mensagem-er
 export class ListarComponent {
   alunos$: Observable<Pagina<Aluno>>;
 
-  displayedColumns: string[] = ['matricula', 'nome', 'tipoSanguineo'];
+  displayedColumns: string[] = [
+    'cpf',
+    'rg',
+    'matricula',
+    'nome',
+    'nomeSocial',
+    'email',
+    'emailEscolar',
+    'tipoSanguineo',
+    'logradouro'];
 
   constructor(public dialog: MatDialog, private service: AlunoService) {
     this.alunos$ = this.service.list().pipe(

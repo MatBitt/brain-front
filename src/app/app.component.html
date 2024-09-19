@@ -2,10 +2,28 @@
   <button mat-icon-button [matMenuTriggerFor]="menu" aria-label="Example icon-button with menu icon">
     <mat-icon>menu</mat-icon>
   </button>
+
   <mat-menu #menu="matMenu">
-    <button mat-menu-item routerLink="/aluno/listar">Listar alunos</button>
-    <button mat-menu-item routerLink="/aluno/cadastrar">Cadastrar alunos</button>
+    <button mat-menu-item [matMenuTriggerFor]="cadastrar">Cadastrar</button>
+    <button mat-menu-item [matMenuTriggerFor]="listar">Listar</button>
   </mat-menu>
+
+  <mat-menu #listar="matMenu">
+    <button mat-menu-item routerLink="/aluno/listar">Alunos</button>
+    <button mat-menu-item routerLink="/professor/listar">Professores</button>
+    <button mat-menu-item routerLink="/responsavel/listar">Responsaveis</button>
+    <button mat-menu-item routerLink="/disciplina/listar">Disciplinas</button>
+    <button mat-menu-item routerLink="/grupo-disciplina/listar">Grupos Disciplinares</button>
+  </mat-menu>
+
+  <mat-menu #cadastrar="matMenu">
+    <button mat-menu-item routerLink="/aluno/cadastrar">Alunos</button>
+    <button mat-menu-item routerLink="/professor/cadastrar">Professores</button>
+    <button mat-menu-item routerLink="/responsavel/cadastrar">Responsaveis</button>
+    <button mat-menu-item routerLink="/disciplina/cadastrar">Disciplinas</button>
+    <button mat-menu-item routerLink="/grupo-disciplina/cadastrar">Grupos Disciplinares</button>
+  </mat-menu>
+
   <span>Brain</span>
 </mat-toolbar>
 <router-outlet></router-outlet>

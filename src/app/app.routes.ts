@@ -19,4 +19,25 @@ export const routes: Routes = [
         (m) => m.PROFESSOR_ROUTES
       ),
   },
+  {
+    path: 'responsavel',
+    loadChildren: () =>
+      import('./modulos/responsavel/responsavel.routes').then(
+        (m) => m.RESPONSAVEL_ROUTES
+      ),
+  },
+  {
+    path: 'disciplina',
+    loadChildren: () =>
+      import('./modulos/disciplina/disciplina.routes').then(
+        (m) => m.DISCIPLINA_ROUTES
+      ),
+  },
+  {
+    path: 'grupo-disciplina',
+    loadChildren: () =>
+      import('./modulos/grupo-disciplina/grupo-disciplina.routes').then(
+        (m) => m.GRUPO_DISCIPLINA_ROUTES
+      ),
+  },
 ];
