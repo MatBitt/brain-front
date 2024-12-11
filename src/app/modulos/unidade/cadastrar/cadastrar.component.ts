@@ -3,15 +3,12 @@ import { Component } from '@angular/core';
 import { FormBuilder, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 import { MatCardModule } from '@angular/material/card';
-import { MatOptionModule } from '@angular/material/core';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
-import { MatSelectModule } from '@angular/material/select';
 import { MatSnackBar } from '@angular/material/snack-bar';
 import { MatToolbarModule } from '@angular/material/toolbar';
-import { FormUtilsService } from '../../../shared/form/form-utils.service';
-import { GrupoDisciplinaService } from '../grupo-disciplina.service';
+import { UnidadeService } from '../../unidade/unidade.service';
 
 @Component({
   selector: 'app-cadastrar',
@@ -22,31 +19,26 @@ import { GrupoDisciplinaService } from '../grupo-disciplina.service';
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
-    MatSelectModule,
-    MatOptionModule,
     MatButtonModule,
     MatIconModule,
-    CommonModule
+    CommonModule,
   ],
   templateUrl: './cadastrar.component.html',
-  styleUrl: './cadastrar.component.scss'
+  styleUrl: './cadastrar.component.scss',
 })
 export class CadastrarComponent {
-form!: FormGroup;
+  form!: FormGroup;
 
   constructor(
     private formBuilder: FormBuilder,
-    private service: GrupoDisciplinaService,
+    private service: UnidadeService,
     private snackBar: MatSnackBar,
-    private location: Location,
-    public formUtils: FormUtilsService,
-  ) {
-  }
+    private location: Location
+  ) {}
 
   ngOnInit(): void {
     this.form = this.formBuilder.group({
       nome: ['', [Validators.required]],
-      area: ['', [Validators.required]],
     });
   }
 
@@ -58,15 +50,16 @@ form!: FormGroup;
   }
 
   onCancel() {
-    console.log(this.form.value)
-    // this.location.back();
+    this.location.back();
   }
 
   private onSuccess() {
-    this.snackBar.open('Grupo disciplinar salvo com sucesso!', '', { duration: 5000 });
+    this.snackBar.open('Unidade salvo com sucesso!', '', {
+      duration: 5000,
+    });
   }
 
   private onError() {
-    this.snackBar.open('Erro ao salvar grupo disciplinar.', '', { duration: 5000 });
+    this.snackBar.open('Erro ao salvar unidade.', '', { duration: 5000 });
   }
 }

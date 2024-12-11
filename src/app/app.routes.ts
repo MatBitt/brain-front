@@ -40,4 +40,18 @@ export const routes: Routes = [
         (m) => m.GRUPO_DISCIPLINA_ROUTES
       ),
   },
+  {
+    path: 'serie',
+    loadChildren: () =>
+      import('./modulos/serie/serie.routes').then(
+        (m) => m.SERIE_ROUTES
+      ),
+  },
+  {
+    path: 'unidade',
+    loadChildren: () =>
+      import('./modulos/unidade/unidade.routes').then(
+        (m) => m.UNIDADE_ROUTES
+      ),
+  },
 ];

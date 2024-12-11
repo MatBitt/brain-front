@@ -1,1 +1,36 @@
-<p>cadastrar works!</p>
+<mat-card>
+  <mat-toolbar color="primary">Cadastrar Professor</mat-toolbar>
+
+  <mat-card-content>
+    <form [formGroup]="form">
+      <mat-form-field>
+        <input matInput placeholder="cpf" formControlName="cpf" #cpf />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="rg" formControlName="rg" #rg />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="Nome" formControlName="nome" #nome />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="email" formControlName="email" #email />
+      </mat-form-field>
+
+      <app-endereco-form
+        (enderecoChange)="onEnderecoChange($event)"
+      ></app-endereco-form>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="actions-center">
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="onCancel()" class="btn-space">
+      Cancelar
+    </button>
+  </mat-card-actions>
+</mat-card>

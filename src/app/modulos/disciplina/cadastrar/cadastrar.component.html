@@ -1,1 +1,51 @@
-<p>cadastrar works!</p>
+<mat-card>
+  <mat-toolbar color="primary">Cadastrar Disciplina</mat-toolbar>
+  <mat-card-content>
+    <form [formGroup]="form">
+
+      <mat-form-field>
+        <mat-label>Unidade</mat-label>
+        <mat-select formControlName="unidadeId">
+          <mat-option *ngFor="let unidade of unidades" [value]="unidade.id">
+            {{ unidade.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Serie</mat-label>
+        <mat-select formControlName="serieId">
+          <mat-option *ngFor="let serie of series" [value]="serie.id">
+            {{ serie.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Grupo disciplinar</mat-label>
+        <mat-select formControlName="grupoId">
+          <mat-option *ngFor="let grupo of grupos" [value]="grupo.id">
+            {{ grupo.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="nome" formControlName="nome" #nome />
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="carga_horaria" formControlName="cargaHoraria" #carga_horaria />
+      </mat-form-field>
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="actions-center">
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="onCancel()" class="btn-space">
+      Cancelar
+    </button>
+  </mat-card-actions>
+</mat-card>

@@ -1,14 +1,14 @@
-import { Pagina } from './../../../model/pagina';
-import { AlunoService } from './../aluno.service';
-import { Component } from '@angular/core';
-import { MatTableModule } from '@angular/material/table';
-import { MatCardModule } from '@angular/material/card';
-import { Aluno } from '../../../model/aluno';
-import { catchError, Observable, of } from 'rxjs';
 import { CommonModule } from '@angular/common';
+import { Component } from '@angular/core';
+import { MatCardModule } from '@angular/material/card';
 import { MatDialog } from '@angular/material/dialog';
 import { MatProgressSpinnerModule } from '@angular/material/progress-spinner';
+import { MatTableModule } from '@angular/material/table';
+import { Observable, catchError, of } from 'rxjs';
+import { Pagina } from '../../../model/pagina';
+import { Unidade } from '../../../model/unidade';
 import { MensagemErroComponent } from '../../../shared/mensagem-erro/mensagem-erro.component';
+import { UnidadeService } from '../../unidade/unidade.service';
 
 @Component({
   selector: 'app-listar',
@@ -23,23 +23,14 @@ import { MensagemErroComponent } from '../../../shared/mensagem-erro/mensagem-er
   styleUrl: './listar.component.scss',
 })
 export class ListarComponent {
-  alunos$: Observable<Pagina<Aluno>>;
+  unidades$: Observable<Pagina<Unidade>>;
 
-  displayedColumns: string[] = [
-    'cpf',
-    'rg',
-    'matricula',
-    'nome',
-    'nomeSocial',
-    'email',
-    'emailEscolar',
-    'tipoSanguineo',
-    'logradouro'];
+  displayedColumns: string[] = ['id', 'nome'];
 
-  constructor(public dialog: MatDialog, private service: AlunoService) {
-    this.alunos$ = this.service.list().pipe(
+  constructor(public dialog: MatDialog, private service: UnidadeService) {
+    this.unidades$ = this.service.list().pipe(
       catchError((error) => {
-        this.onError('Erro ao carregar alunos.');
+        this.onError('Erro ao carregar unidades.');
         return of();
       })
     );

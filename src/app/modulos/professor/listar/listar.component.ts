@@ -41,7 +41,7 @@ export class ListarComponent {
     this.professores$ = this.service.list().pipe(
       catchError((error) => {
         this.onError('Erro ao carregar professores.');
-        return of(); // TODO Retornar uma pagina vazia
+        return of();
       })
     );
   }

@@ -1,1 +1,38 @@
-<p>listar works!</p>
+<mat-card>
+  @if (responsaveis$ | async; as responsaveis) {
+  <table mat-table [dataSource]="responsaveis.content" class="mat-elevation-z8">
+
+    <ng-container matColumnDef="cpf">
+      <th mat-header-cell *matHeaderCellDef>Cpf</th>
+      <td mat-cell *matCellDef="let responsavel">{{ responsavel.cpf }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="rg">
+      <th mat-header-cell *matHeaderCellDef>Rg</th>
+      <td mat-cell *matCellDef="let responsavel">{{ responsavel.rg }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="email">
+      <th mat-header-cell *matHeaderCellDef>Email</th>
+      <td mat-cell *matCellDef="let responsavel">{{ responsavel.email }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="nome">
+      <th mat-header-cell *matHeaderCellDef>Nome</th>
+      <td mat-cell *matCellDef="let responsavel">{{ responsavel.nome }}</td>
+    </ng-container>
+
+    <ng-container matColumnDef="logradouro">
+      <th mat-header-cell *matHeaderCellDef>Logradouro</th>
+      <td mat-cell *matCellDef="let responsavel">{{ responsavel.endereco.logradouro }}</td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+  </table>
+  }@else {
+  <div class="loading-spinner">
+    <mat-spinner></mat-spinner>
+  </div>
+  }
+</mat-card>

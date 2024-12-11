@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pagina } from '../../model/pagina';
-import { Responsavel } from '../../model/responsavel';
+import { Serie } from '../../model/serie';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ResponsavelService {
-  private readonly API = '/api/responsavel';
+export class SerieService {
+  private readonly API = '/api/serie';
 
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Pagina<Responsavel>>(this.API);
+    return this.httpClient.get<Pagina<Serie>>(this.API);
   }
 
-  save(record: Partial<Responsavel>) {
+  save(record: Partial<Serie>) {
     return this.httpClient.post(this.API, record);
   }
 }

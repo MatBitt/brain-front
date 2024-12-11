@@ -1,21 +1,21 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Pagina } from '../../model/pagina';
-import { Responsavel } from '../../model/responsavel';
+import { Unidade } from '../../model/unidade';
 
 @Injectable({
   providedIn: 'root'
 })
-export class ResponsavelService {
-  private readonly API = '/api/responsavel';
+export class UnidadeService {
+  private readonly API = '/api/unidade';
 
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Pagina<Responsavel>>(this.API);
+    return this.httpClient.get<Pagina<Unidade>>(this.API);
   }
 
-  save(record: Partial<Responsavel>) {
+  save(record: Partial<Unidade>) {
     return this.httpClient.post(this.API, record);
   }
 }
