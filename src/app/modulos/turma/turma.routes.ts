@@ -1,8 +1,7 @@
 import { Routes } from '@angular/router';
-import { CadastrarComponent } from './cadastrar/cadastrar.component';
 import { ListarComponent } from './listar/listar.component';
 
-export const UNIDADE_ROUTES: Routes = [
+export const TURMA_ROUTES: Routes = [
   // { path: 'cadastrar', component: CadastrarComponent },
   { path: 'listar', component: ListarComponent },
 ];

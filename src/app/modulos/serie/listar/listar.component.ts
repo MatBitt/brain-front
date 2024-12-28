@@ -23,7 +23,7 @@ import { MensagemErroComponent } from '../../../shared/mensagem-erro/mensagem-er
   styleUrl: './listar.component.scss',
 })
 export class ListarComponent {
-  series$: Observable<Pagina<Serie>>;
+  series$: Observable<Serie[]>;
 
   displayedColumns: string[] = ['id', 'nome'];
 

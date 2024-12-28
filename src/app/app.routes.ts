@@ -54,4 +54,18 @@ export const routes: Routes = [
         (m) => m.UNIDADE_ROUTES
       ),
   },
+  {
+    path: 'turma',
+    loadChildren: () =>
+      import('./modulos/turma/turma.routes').then(
+        (m) => m.TURMA_ROUTES
+      ),
+  },
+  {
+    path: 'aula',
+    loadChildren: () =>
+      import('./modulos/aula/aula.routes').then(
+        (m) => m.AULA_ROUTES
+      ),
+  },
 ];

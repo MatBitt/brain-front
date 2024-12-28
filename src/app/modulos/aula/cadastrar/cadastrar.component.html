@@ -1,0 +1,48 @@
+<mat-card>
+  <mat-toolbar color="primary">Cadastrar Aula</mat-toolbar>
+  <mat-card-content>
+    <form [formGroup]="form">
+
+      <mat-form-field>
+        <mat-label>Disciplina</mat-label>
+        <mat-select formControlName="disciplinaId">
+          <mat-option *ngFor="let disciplina of disciplinas" [value]="disciplina.id">
+            {{ disciplina.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Professor</mat-label>
+        <mat-select formControlName="professorId">
+          <mat-option *ngFor="let professor of professores" [value]="professor.cpf">
+            {{ professor.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <mat-label>Turma</mat-label>
+        <mat-select formControlName="turma">
+          <mat-option *ngFor="let turma of turmas" [value]="turma.id">
+            {{ turma.nome }}
+          </mat-option>
+        </mat-select>
+      </mat-form-field>
+
+      <mat-form-field>
+        <input matInput placeholder="horario" formControlName="horario" #horario />
+      </mat-form-field>
+
+    </form>
+  </mat-card-content>
+
+  <mat-card-actions class="actions-center">
+    <button mat-raised-button color="primary" (click)="onSubmit()">
+      Salvar
+    </button>
+    <button mat-raised-button (click)="onCancel()" class="btn-space">
+      Cancelar
+    </button>
+  </mat-card-actions>
+</mat-card>

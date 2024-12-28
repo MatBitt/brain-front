@@ -62,11 +62,11 @@ export class CadastrarComponent {
 
   ngOnInit(): void {
     this.unidadeService.list().subscribe({
-      next: (data) => this.unidades = data.content,
+      next: (data) => this.unidades = data,
       error: (err) => console.error('Erro ao buscar gêneros', err)
     });
     this.serieService.list().subscribe({
-      next: (data) => this.series = data.content,
+      next: (data) => this.series = data,
       error: (err) => console.error('Erro ao buscar gêneros', err)
     });
     this.grupoDisciplinaService.list().subscribe({

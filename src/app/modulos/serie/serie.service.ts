@@ -12,7 +12,7 @@ export class SerieService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Pagina<Serie>>(this.API);
+    return this.httpClient.get<Serie[]>(this.API);
   }
 
   save(record: Partial<Serie>) {

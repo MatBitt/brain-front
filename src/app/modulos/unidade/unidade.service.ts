@@ -12,7 +12,7 @@ export class UnidadeService {
   constructor(private httpClient: HttpClient) { }
 
   list() {
-    return this.httpClient.get<Pagina<Unidade>>(this.API);
+    return this.httpClient.get<Unidade[]>(this.API);
   }
 
   save(record: Partial<Unidade>) {
