@@ -8,10 +8,6 @@ export interface Aluno {
   emailEscolar: string;
   endereco: Endereco;
   dataDeNascimento: string;
-  genero: string;
-  corRaca: string;
-  cidadeNaturalidade: string;
   rg: string;
   matricula: string;
-  tipoSanguineo: string;
 }

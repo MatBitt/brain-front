@@ -42,45 +42,6 @@
         <mat-datepicker #picker></mat-datepicker>
       </mat-form-field>
 
-      <mat-form-field>
-        <mat-label>Genero</mat-label>
-        <mat-select formControlName="genero">
-          <mat-option value="masculino">Masculino</mat-option>
-          <mat-option value="feminino">Feminino</mat-option>
-          <mat-option value="outro">Outro</mat-option>
-        </mat-select>
-        @if (form.get('category')?.invalid) {
-        <mat-error>{{ formUtils.getErrorMessage(form, "category") }}</mat-error>
-        }
-      </mat-form-field>
-
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="corRaca"
-          formControlName="corRaca"
-          #corRaca
-        />
-      </mat-form-field>
-
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="cidadeNaturalidade"
-          formControlName="cidadeNaturalidade"
-          #cidadeNaturalidade
-        />
-      </mat-form-field>
-
-      <mat-form-field>
-        <input
-          matInput
-          placeholder="tipoSanguineo"
-          formControlName="tipoSanguineo"
-          #tipoSanguineo
-        />
-      </mat-form-field>
-
       <app-endereco-form
         (enderecoChange)="onEnderecoChange($event)"
       ></app-endereco-form>

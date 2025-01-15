@@ -18,6 +18,9 @@ import { AulaService } from '../aula.service';
 import { Professor } from '../../../model/professor';
 import { ProfessorService } from '../../professor/professor.service';
 import { TurmaService } from '../../turma/turma.service';
+import { SerieService } from '../../serie/serie.service';
+import { HorarioService } from '../../horario/horario.service';
+import { Horario } from '../../../model/horario';
 
 @Component({
   selector: 'app-cadastrar',
@@ -42,6 +45,7 @@ export class CadastrarComponent {
   disciplinas: Disciplina[] = [];
   professores: Professor[] = [];
   turmas: Turma[] = [];
+  horarios: Horario[] = [];
 
   constructor(
     private formBuilder: FormBuilder,
@@ -51,27 +55,32 @@ export class CadastrarComponent {
     public disciplinaService: DisciplinaService,
     public professorService: ProfessorService,
     public turmaService: TurmaService,
-    public serieService: TurmaService,
+    public serieService: SerieService,
+    public horarioService: HorarioService,
   ) {}
 
   ngOnInit(): void {
     this.disciplinaService.list().subscribe({
       next: (data) => (this.disciplinas = data.content),
-      error: (err) => console.error('Erro ao buscar gêneros', err),
+      error: (err) => console.error('Erro ao buscar disciplinas', err),
     });
     this.turmaService.list().subscribe({
       next: (data) => (this.turmas = data),
-      error: (err) => console.error('Erro ao buscar gêneros', err),
+      error: (err) => console.error('Erro ao buscar turmas', err),
     });
     this.professorService.list().subscribe({
       next: (data) => (this.professores = data.content),
-      error: (err) => console.error('Erro ao buscar gêneros', err),
+      error: (err) => console.error('Erro ao buscar professores', err),
+    });
+    this.horarioService.list().subscribe({
+      next: (data) => this.horarios = data,
+      error: (err) => console.error('Erro ao buscar gêneros', err)
     });
     this.form = this.formBuilder.group({
       disciplinaId: [0, [Validators.required]],
       turma: [0, [Validators.required]],
       professorId: [0, [Validators.required]],
-      horario: ['', [Validators.required]],
+      horarioId: [0, [Validators.required]],
     });
   }
 

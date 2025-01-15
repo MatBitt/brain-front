@@ -33,7 +33,6 @@ export class ListarComponent {
     'nomeSocial',
     'email',
     'emailEscolar',
-    'tipoSanguineo',
     'logradouro'];
 
   constructor(public dialog: MatDialog, private service: AlunoService) {

@@ -74,11 +74,7 @@ export class CadastrarComponent implements OnInit {
       email: ['', [Validators.required]],
       dataDeNascimento: ['', [Validators.required]],
       endereco: this.formBuilder.group({}),
-      genero: ['', [Validators.required]],
-      corRaca: ['', [Validators.required]],
-      cidadeNaturalidade: ['', [Validators.required]],
       rg: ['', [Validators.required]],
-      tipoSanguineo: ['', [Validators.required]],
     });
   }
 
